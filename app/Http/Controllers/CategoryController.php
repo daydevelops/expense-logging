@@ -14,7 +14,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categories = Category::with('contributors')->get();
+        return view('categories.all',compact('categories'));
     }
 
     /**
