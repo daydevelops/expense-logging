@@ -21,3 +21,5 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/categories','CategoryController@index')->middleware('auth');
+Route::delete('/categories/{category}','CategoryController@destroy');
+Route::patch('/categories/{category}','CategoryController@update');
