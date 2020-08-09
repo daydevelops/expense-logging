@@ -20,6 +20,9 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
 Route::get('/categories','CategoryController@index')->middleware('auth');
-Route::delete('/categories/{category}','CategoryController@destroy');
-Route::patch('/categories/{category}','CategoryController@update');
+Route::get('categories/new','CategoryController@create')->middleware('auth');
+Route::post('/categories','CategoryController@store')->middleware('auth');
+Route::delete('/categories/{category}','CategoryController@destroy')->middleware('auth');
+Route::patch('/categories/{category}','CategoryController@update')->middleware('auth');

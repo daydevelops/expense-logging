@@ -49,6 +49,13 @@
             @endforeach
         </tbody>
     </table>
+    <div class="row">
+        <div class="col-12">
+            <a href="/categories/new">
+                <button class="btn btn-lg btn-primary m-auto d-block">New Category</button>
+            </a>
+        </div>
+    </div>
 </div>
 
 <!-- Modal -->

@@ -121,6 +121,28 @@ window.update = function (id) {
   });
 };
 
+window["new"] = function () {
+  var name = $('#cat_name').val();
+  var conts = document.querySelectorAll('.contribution');
+  var users = [];
+  var percentages = [];
+
+  for (var i = 0; i < conts.length; i++) {
+    users.push(conts[i].dataset.user);
+    percentages.push(conts[i].value);
+  }
+
+  axios.post('/categories/', {
+    name: name,
+    users: users,
+    percentages: percentages
+  }).then(function (response) {
+    window.location = "/categories";
+  })["catch"](function (errors) {
+    console.log(errors);
+  });
+};
+
 /***/ }),
 
 /***/ 1:

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\Contributor;
+use App\User;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -26,7 +27,8 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        $users = User::all();
+        return view('categories.new',compact('users'));
     }
 
     /**
@@ -37,7 +39,19 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $name = request('name');
+        $user_ids = request('users');
+        $percs = request('percentages');
+
+        $category = Category::create(['name'=>$name]);
+
+        foreach ($user_ids as $key => $u_id) {
+            Contributor::create([
+                'category_id'=>$category->id,
+                'user_id' => $u_id,
+                'contribution' => $percs[$key]
+            ]);
+        }
     }
 
     /**
