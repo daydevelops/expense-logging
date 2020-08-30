@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'LogsController@index');
+Route::get('/', 'LogController@index');
 
 Auth::routes();
 

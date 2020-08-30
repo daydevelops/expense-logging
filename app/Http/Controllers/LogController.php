@@ -14,7 +14,15 @@ class LogController extends Controller
      */
     public function index()
     {
-        //
+        $logs = Log::where(['archived'=>0])->get();
+        $refunds = Log::calculateRefunds($logs);
+
+        return view('logs',compact('logs','refunds'));
+    }
+
+    public function archived() {
+        $archived =  Log::where(['archived'=>1])->get();
+        return view('logs',compact('archived'));
     }
 
     /**
