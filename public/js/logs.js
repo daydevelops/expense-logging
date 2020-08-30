@@ -101,6 +101,19 @@ window["delete"] = function (id) {
   });
 };
 
+window.newLog = function () {
+  data = new FormData();
+  data.append('category_id', $('#category').val());
+  data.append('payer_id', $('#payer').val());
+  data.append('cost', $('#cost').val());
+  console.log(data);
+  axios.post('/logs/', data).then(function (response) {
+    location.reload();
+  })["catch"](function (errors) {
+    console.log(errors);
+  });
+};
+
 /***/ }),
 
 /***/ 1:

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\Log;
+use App\User;
 use Illuminate\Http\Request;
 
 class LogController extends Controller
@@ -32,7 +34,9 @@ class LogController extends Controller
      */
     public function create()
     {
-        //
+        $users = User::all();
+        $categories = Category::all();
+        return view('newlog',compact('categories','users'));
     }
 
     /**
@@ -43,7 +47,7 @@ class LogController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Log::create($request->all());
     }
 
     /**
