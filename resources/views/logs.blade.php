@@ -20,6 +20,31 @@
     </div>
     @endisset
 
+    @if(!\Request::is('archived'))
+    <h3 class="text-center">Logs</h3>
+    <button class="btn btn-sm btn-warning m-auto d-block" data-toggle="modal" data-target="#archive_modal">Archive These Logs</button>
+    @endif
+
+    <!-- Modal -->
+    <div class="modal fade" id="archive_modal" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Archive These Logs?</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                </div>
+                <div class="modal-body">
+                    Are you sure? This cannot be undone. You should only archive the logs if the refunds have been balanced.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="window.archive()">Archive</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <table class="table table-sm">
         <thead>
             <tr>

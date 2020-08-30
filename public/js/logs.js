@@ -114,6 +114,14 @@ window.newLog = function () {
   });
 };
 
+window.archive = function () {
+  axios.post('/archive/').then(function (response) {
+    location.reload();
+  })["catch"](function (errors) {
+    console.log(errors);
+  });
+};
+
 /***/ }),
 
 /***/ 1:

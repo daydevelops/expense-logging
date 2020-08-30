@@ -25,3 +25,13 @@ window.newLog = () => {
         console.log(errors);
     })
 }
+
+window.archive = () => {
+    axios.post('/archive/')
+        .then(response => {
+            location.reload()
+        })
+        .catch(errors => {
+            console.log(errors);
+        })
+}

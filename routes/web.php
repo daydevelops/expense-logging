@@ -18,6 +18,7 @@ Route::get('/new','LogController@create')->middleware('auth');
 Route::post('/logs','LogController@store')->middleware('auth');
 Route::get('/archived','LogController@archived')->middleware('auth');
 Route::delete('/logs/{log}','LogController@destroy')->middleware('auth');
+Route::post('/archive','LogController@archive')->middleware('auth');
 
 Auth::routes();
 

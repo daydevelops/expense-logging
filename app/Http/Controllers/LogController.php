@@ -6,6 +6,7 @@ use App\Category;
 use App\Log;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class LogController extends Controller
 {
@@ -60,5 +61,9 @@ class LogController extends Controller
     {
         // no validation needed, anyone can delete a log
         $log->delete();
+    }
+
+    public function archive() {
+        DB::table('logs')->update(['archived'=>1]);
     }
 }
