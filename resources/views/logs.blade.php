@@ -42,3 +42,7 @@
     </table>
 </div>
 @endsection
+
+@section('js')
+<script src='{{ asset("js/logs.js") }}'></script>
+@endsection

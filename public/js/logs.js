@@ -81,63 +81,21 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 2);
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./resources/js/categories.js":
-/*!************************************!*\
-  !*** ./resources/js/categories.js ***!
-  \************************************/
+/***/ "./resources/js/logs.js":
+/*!******************************!*\
+  !*** ./resources/js/logs.js ***!
+  \******************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-window["delete"] = function () {
-  axios["delete"]('/categories/' + window.cat2delete).then(function (response) {
+window["delete"] = function (id) {
+  axios["delete"]('/logs/' + id).then(function (response) {
     location.reload();
-  })["catch"](function (errors) {
-    console.log(errors);
-  });
-};
-
-window.update = function (id) {
-  var conts = document.querySelectorAll('.contribution-cat-' + id);
-  var users = [];
-  var percentages = [];
-
-  for (var i = 0; i < conts.length; i++) {
-    users.push(conts[i].dataset.user);
-    percentages.push(conts[i].value);
-  }
-
-  axios.patch('/categories/' + id, {
-    users: users,
-    percentages: percentages
-  }).then(function (response) {
-    location.reload();
-  })["catch"](function (errors) {
-    console.log(errors);
-  });
-};
-
-window["new"] = function () {
-  var name = $('#cat_name').val();
-  var conts = document.querySelectorAll('.contribution');
-  var users = [];
-  var percentages = [];
-
-  for (var i = 0; i < conts.length; i++) {
-    users.push(conts[i].dataset.user);
-    percentages.push(conts[i].value);
-  }
-
-  axios.post('/categories/', {
-    name: name,
-    users: users,
-    percentages: percentages
-  }).then(function (response) {
-    window.location = "/categories";
   })["catch"](function (errors) {
     console.log(errors);
   });
@@ -145,14 +103,14 @@ window["new"] = function () {
 
 /***/ }),
 
-/***/ 2:
-/*!******************************************!*\
-  !*** multi ./resources/js/categories.js ***!
-  \******************************************/
+/***/ 1:
+/*!************************************!*\
+  !*** multi ./resources/js/logs.js ***!
+  \************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/adam/Sites/explog/resources/js/categories.js */"./resources/js/categories.js");
+module.exports = __webpack_require__(/*! /Users/adam/Sites/explog/resources/js/logs.js */"./resources/js/logs.js");
 
 
 /***/ })

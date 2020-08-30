@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'LogController@index')->middleware('auth');
 Route::get('/archived','LogController@archived')->middleware('auth');
+Route::delete('/logs/{log}','LogController@destroy')->middleware('auth');
 
 Auth::routes();
 
