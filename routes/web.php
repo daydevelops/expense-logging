@@ -13,7 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'LogController@index');
+Route::get('/', 'LogController@index')->middleware('auth');
+Route::get('/archived','LogController@archived')->middleware('auth');
 
 Auth::routes();
 

@@ -21,8 +21,8 @@ class LogController extends Controller
     }
 
     public function archived() {
-        $archived =  Log::where(['archived'=>1])->get();
-        return view('logs',compact('archived'));
+        $logs =  Log::where(['archived'=>1])->get();
+        return view('logs',compact('logs'));
     }
 
     /**
