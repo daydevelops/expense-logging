@@ -20,7 +20,7 @@ Route::get('/archived','LogController@archived')->middleware('auth');
 Route::delete('/logs/{log}','LogController@destroy')->middleware('auth');
 Route::post('/archive','LogController@archive')->middleware('auth');
 
-Auth::routes();
+Auth::routes(['register' => false]);
 
 
 Route::get('/categories','CategoryController@index')->middleware('auth');
