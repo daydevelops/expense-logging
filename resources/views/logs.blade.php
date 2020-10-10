@@ -51,6 +51,7 @@
                 <th>Payer</th>
                 <th>Category</th>
                 <th>Cost</th>
+                <th>Date</th>
                 <th>Delete</th>
             </tr>
         </thead>
@@ -60,6 +61,7 @@
                 <td scope="row">{{$log->payer->name}}</td>
                 <td>{{$log->category->name}}</td>
                 <td>{{$log->cost}}</td>
+                <td>{{$log->date}}</td>
                 <td><button class="btn btn-danger btn-sm" onclick="window.delete({{$log->id}})">Delete</button></td>
             </tr>
             @endforeach

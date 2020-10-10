@@ -106,6 +106,7 @@ window.newLog = function () {
   data.append('category_id', $('#category').val());
   data.append('payer_id', $('#payer').val());
   data.append('cost', $('#cost').val());
+  data.append('date', $('#date').val());
   console.log(data);
   axios.post('/logs/', data).then(function (response) {
     location.reload();
@@ -121,6 +122,10 @@ window.archive = function () {
     console.log(errors);
   });
 };
+
+window.addEventListener('load', function () {
+  document.getElementById('date').valueAsDate = new Date();
+});
 
 /***/ }),
 
