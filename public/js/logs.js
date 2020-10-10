@@ -123,10 +123,6 @@ window.archive = function () {
   });
 };
 
-window.addEventListener('load', function () {
-  document.getElementById('date').valueAsDate = new Date();
-});
-
 /***/ }),
 
 /***/ 1:

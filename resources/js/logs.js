@@ -36,6 +36,3 @@ window.archive = () => {
             console.log(errors);
         })
 }
-window.addEventListener('load',function () {
-    document.getElementById('date').valueAsDate = new Date();
-});
