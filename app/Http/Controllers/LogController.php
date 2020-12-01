@@ -19,8 +19,15 @@ class LogController extends Controller
     {
         $logs = Log::where(['archived'=>0])->get();
         $refunds = Log::calculateRefunds($logs);
+        $keys = array_keys($refunds);
+        $difference = abs($refunds[$keys[0]]-$refunds[$keys[1]]);
+        if ($refunds[$keys[0]] < $refunds[$keys[1]]) {
+            $result = $keys[0] . " owes " . $keys[1] . " " . $difference;
+        } else {
+            $result = $keys[1] . " owes " . $keys[0] . " " . $difference;
+        }
 
-        return view('logs',compact('logs','refunds'));
+        return view('logs',compact('logs','refunds','result'));
     }
 
     public function archived() {

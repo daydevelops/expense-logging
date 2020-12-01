@@ -17,6 +17,10 @@
                 @endforeach
             </tbody>
         </table>
+        <h5 id="results">
+        {{$result}}
+        </h5>
+        <hr>
     </div>
     @endisset
 
