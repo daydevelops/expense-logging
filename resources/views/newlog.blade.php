@@ -26,7 +26,7 @@
     <div class="form-group">
       <label for="">Date (optional)</label>
       <input type="date"
-        class="form-control" name="date" id="date" aria-describedby="helpId" value="{{date('yy-m-d')}}">
+        class="form-control" name="date" id="date" aria-describedby="helpId" value="{{date('Y-m-d')}}">
     </div>
     <button type="submit" class="btn btn-primary" onclick="window.newLog()">Submit</button>
 </div>
