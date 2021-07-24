@@ -16,7 +16,7 @@ class LogSeeder extends Seeder
     {
         $cats = Category::all();
         $users = User::all();
-        for ($i=0;$i<10;$i++) {
+        for ($i=0;$i<300;$i++) {
             factory(Log::class)->create([
                 'category_id' => $cats->random(),
                 'payer_id' => $users->random()
