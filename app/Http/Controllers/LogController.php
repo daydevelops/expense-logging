@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Category;
 use App\Log;
 use App\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -82,8 +83,13 @@ class LogController extends Controller
             'category_id' => 'required|exists:categories,id'
         ]);
 
-        return Log::where(['category_id'=>$request['category_id']])->orderBy('created_at')->get()->map(function ($log) {
-            $log->date = $log->created_at;
+        return Log::select('category_id','date','cost')
+        ->where(['category_id'=>$request['category_id']])
+        ->where('date','!=',null)
+        ->orderBy('date')
+        ->get()
+        ->map(function ($log) {
+            $log->date = Carbon::create($log->date);
             return $log;
         });
     }
