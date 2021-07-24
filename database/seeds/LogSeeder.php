@@ -19,7 +19,8 @@ class LogSeeder extends Seeder
         for ($i=0;$i<300;$i++) {
             factory(Log::class)->create([
                 'category_id' => $cats->random(),
-                'payer_id' => $users->random()
+                'payer_id' => $users->random(),
+                'created_at' => now()->addDay(rand(-400,400))
             ]);
         }
     }

@@ -2,6 +2,10 @@
 
 @section('content')
 <div class="container">
+
+    <expenses-chart :categories="{{json_encode($categories)}}"></expenses-chart>
+
+
     @isset($refunds)
     <div class="row justify-content-center">
         <h3 class="text-center">

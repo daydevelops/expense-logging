@@ -18,6 +18,7 @@ class LogController extends Controller
     public function index()
     {
         $logs = Log::where(['archived'=>0])->get();
+        $categories = Category::all();
         $refunds = Log::calculateRefunds($logs);
         $keys = array_keys($refunds);
         $difference = abs($refunds[$keys[0]]-$refunds[$keys[1]]);
@@ -27,12 +28,13 @@ class LogController extends Controller
             $result = $keys[1] . " owes " . $keys[0] . " " . $difference;
         }
 
-        return view('logs',compact('logs','refunds','result'));
+        return view('logs',compact('logs','refunds','result','categories'));
     }
 
     public function archived() {
         $logs =  Log::where(['archived'=>1])->get();
-        return view('logs',compact('logs'));
+        $categories = Category::all();
+        return view('logs',compact('logs','categories'));
     }
 
     /**
@@ -72,5 +74,17 @@ class LogController extends Controller
 
     public function archive() {
         DB::table('logs')->update(['archived'=>1]);
+    }
+
+    // return all logs for a given category
+    public function logs(Request $request) {
+        $request->validate([
+            'category_id' => 'required|exists:categories,id'
+        ]);
+
+        return Log::where(['category_id'=>$request['category_id']])->orderBy('created_at')->get()->map(function ($log) {
+            $log->date = $log->created_at;
+            return $log;
+        });
     }
 }
